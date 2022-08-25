@@ -1,0 +1,28 @@
+{
+    "name": "bohdan.dubyk/proxx",
+    "description": "Proxx game",
+    "type": "project",
+    "autoload": {
+        "psr-4": {
+            "BohdanDubyk\\Proxx\\": "src/",
+            "Tests\\": "tests/"
+        }
+    },
+    "authors": [
+        {
+            "name": "Bohdan Dubyk",
+            "email": "bogdan.dubyk@gmail.com"
+        }
+    ],
+    "require": {
+        "symfony/console": "^5.0|^6.0"
+    },
+    "bin": [
+        "bin/proxx"
+    ],
+    "require-dev": {
+        "symfony/var-dumper": "^6.1",
+        "phpunit/phpunit": "^9.5",
+        "dg/bypass-finals": "^1.3"
+    }
+}
