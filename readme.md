@@ -34,7 +34,7 @@ OK (42 tests, 142 assertions)
 
 ## Playing
 
-Run in your console ``bin/proxx``
+Run ``./bin/proxx`` in your console 
 
 ## TODO
 
@@ -49,7 +49,7 @@ Run in your console ``bin/proxx``
 ### New implementations
 The core of the application exist under ``BohdanDubyk\Proxx\Game\Core`` namespace. So basically to
 provide new game implementation, for example SPA implementation you need only properly use ``BohdanDubyk\Proxx\Game\Core\Engine`` 
-(API of enigne provided in seciont API).
+API of enigne provided in [Engine API](#engine-api) section.
 
 Currently application has only console implementation, and here is the example of how it's implemented (simplified)
 
@@ -69,22 +69,22 @@ public function runGame(?GameState $state = null): ?GameState
     }
 }
 ```
-Basically it's recursion which making different steps depends on the current game state. 
+Basically it's recursion which calling different methods depends on the current game state. 
 
 For example if you want to make HTTP implementation you simply need to run correct HTTP calls depends on the 
 state provided in response. But also you need to think about how to store the user session (engine state, board etc.),
-it's up to how to do it.
+it's up to you how to do it.
 
 ### Cusomizing current CLI implementation
 
 If you want to change a messages, board style or localazie the current CLI implementation, you can do it by simply
-implementing ``BohdanDubyk\Proxx\Game\Console\IO\``. Game using ``BohdanDubyk\Proxx\Services\IOSymfonyManager`` implementation based on (Symfony console component)[https://symfony.com/doc/current/console.html#testing-commands]
+implementing ``BohdanDubyk\Proxx\Game\Console\IO\``. Game using ``BohdanDubyk\Proxx\Services\IOSymfonyManager`` implementation based on [Symfony console component](https://symfony.com/doc/current/console.html#testing-commands])
 
 ## Engine API
 
 ### start(Position $position)
 
-*__Desctiption__*:
+*__Description__*:
 This method trigger game start and generating the board.
 Should be called if game in one of states: `GameState::NOT_STARTED`, `GameState::WIN` and `GameState::DEFEAT`
 
@@ -102,7 +102,7 @@ So board will be generated in a way that first click never will be on a bomb
 
 ### next(Position $position)
 
-*__Desctiption__*:
+*__Description__*:
 This method making the click and revealing filed on the board in the place of provided position
 Should be called only if game is in  `GameState::STARTED` state
 
@@ -120,7 +120,7 @@ Should be called only if game is in  `GameState::STARTED` state
 
 ### restart(?Configuration $newConfiguration)
 
-*__Desctiption__*:
+*__Description__*:
 This method can be called when you want to restart the board. This method will invalidate the current board. 
 If configuration provided it'll replace existing config with it and will be used for new board generation
 Can be called from any state except GameState::STOP
